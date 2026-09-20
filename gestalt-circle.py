@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 # 页面基础配置：全宽无侧栏沉浸式展现
 st.set_page_config(
@@ -20,7 +21,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 嵌入带三语切换与 8 三角形负空间错觉的前端代码
+# 纯前端 Canvas 渲染代码（已移除左上角说明小字，只留标题）
 gestalt_html_code = """
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -287,5 +288,5 @@ gestalt_html_code = """
 </html>
 """
 
-# 使用原生 st.html 渲染
-st.html(gestalt_html_code)
+# 使用独立 iframe 渲染容器，恢复正常画面
+components.html(gestalt_html_code, height=920, scrolling=False)
